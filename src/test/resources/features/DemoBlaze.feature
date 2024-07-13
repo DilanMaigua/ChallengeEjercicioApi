@@ -29,7 +29,7 @@ Feature: Prueba de api DemoBlaze
     Examples:
       | user                     | pass       |
       | asd                      | aasdassd   |
-      | DilanMaiguaChallengeApi1 | 1545648    |
+      | DilanMaiguaChallengeApi10 | 1545648    |
       | DilanMaigua10            | asd        |
 
 
