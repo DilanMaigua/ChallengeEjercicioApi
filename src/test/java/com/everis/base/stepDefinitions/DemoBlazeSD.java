@@ -35,11 +35,6 @@ public class DemoBlazeSD {
         demoblaze.validarStatusCode(i);
     }
 
-    @And("se valida el {string} sea {string}")
-    public void seValidaElSea(String arg0, String arg1) {
-        demoblaze.validarDataResponse(arg0,arg1);
-    }
-
 
     @And("^agregar la cabecera key: \"([^\"]*)\", y valor: \"([^\"]*)\"$")
     public void agregarLaCabeceraKeyYValor(String k, String v) {
@@ -49,5 +44,25 @@ public class DemoBlazeSD {
     @And("valido la creacion del usuario")
     public void validoLaCreacionDelUsuario() {
         demoblaze.validarCracionUsuario();
+    }
+
+    @And("inicializo un post en login")
+    public void inicializoUnPostEnLogin() {
+        demoblaze.incializoParametrosRequestPost();
+    }
+
+    @And("inicio sesion con el username {string} y password {string}")
+    public void inicioSesionConElUsernameYPassword(String arg0, String arg1) {
+        demoblaze.inicarSesion(arg0,arg1);
+    }
+
+    @And("ejecuto el \"([^\"]*)\"$")
+    public void ejecutoEl(String api) {
+        demoblaze.sendPostRequest(api);
+    }
+
+    @And("valido que el usuario se a logiado")
+    public void validoQueElUsuarioSeALogiado() {
+        demoblaze.validarEstadoLogeo();
     }
 }

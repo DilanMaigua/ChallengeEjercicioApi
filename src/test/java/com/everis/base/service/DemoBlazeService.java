@@ -12,6 +12,7 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import net.thucydides.core.annotations.Step;
 import org.hamcrest.CoreMatchers;
+import org.json.JSONObject;
 
 import static net.serenitybdd.rest.SerenityRest.given;
 import static net.serenitybdd.rest.SerenityRest.lastResponse;
@@ -80,9 +81,7 @@ public class DemoBlazeService {
         builder.addHeader(k, v);
     }
 
-    public void validarDataResponse(String arg0, String arg1) {
-        assertThat(response.body().path(arg0), CoreMatchers.equalTo(arg1));
-    }
+
 
     public void validarCracionUsuario() {
         String responseBody = response.getBody().asString();
@@ -94,6 +93,38 @@ public class DemoBlazeService {
             throw new AssertionError("El usuario ya existe.");
         } else {
             LOGGER.info("Usuario creado con éxito.");
+        }
+    }
+
+    public void inicarSesion(String user, String pass) {
+        JsonObject parametros = new JsonObject();
+        parametros.addProperty("username", user);
+        parametros.addProperty("password", pass);
+        bodyPost = parametros.toString();
+        builder.setBody(bodyPost);
+    }
+
+    public void validarEstadoLogeo() {
+        String responseBody = response.getBody().asString();
+        LOGGER.info("Response body logeo:" + responseBody);
+
+        responseBody = responseBody.replace("\"", "");
+
+        response.then().assertThat().statusCode(200);
+
+        if (responseBody.startsWith("{")) {
+            JSONObject jsonResponse = new JSONObject(responseBody);
+            String errorMessage = jsonResponse.optString("errorMessage");
+
+            if ("Wrong password.".equals(errorMessage)) {
+                throw new AssertionError("Contraseña incorrecta.");
+            } else if ("User does not exist.".equals(errorMessage)) {
+                throw new AssertionError("El usuario no existe.");
+            } else {
+                throw new AssertionError("Error desconocido: " + errorMessage);
+            }
+        } else if (responseBody.startsWith("Auth_token:")) {
+            LOGGER.info("Usuario se ha logeado con exito");
         }
     }
 }

@@ -1,3 +1,4 @@
+@PruebasDemoblaze
 Feature: Prueba de api DemoBlaze
 
   @test1
@@ -12,11 +13,24 @@ Feature: Prueba de api DemoBlaze
 
 
       Examples:
-        | user              | pass |
-        | Dil544addas5Maa | 1545648 |
-        | Dil544addas5Maa | 1545648 |
+        | user                     | pass    |
+        | DilanMaiguaChallengeApi10 | 1545648 |
+        | DilanMaiguaChallengeApi10  | 1545648 |
 
-
+  @test2
+  Scenario Outline: Iniciar sesion de usuario en login
+    Given que la aplicación esta funcionando
+    And inicializo un post en login
+    And agregar la cabecera key: "Content-Type", y valor: "application/json;charset=UTF-8"
+    And inicio sesion con el username "<user>" y password "<pass>"
+    And ejecuto el "login"
+    Then valido que la respuesta es 200
+    And valido que el usuario se a logiado
+    Examples:
+      | user                     | pass       |
+      | asd                      | aasdassd   |
+      | DilanMaiguaChallengeApi1 | 1545648    |
+      | DilanMaigua10            | asd        |
 
 
 
