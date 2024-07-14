@@ -15,9 +15,7 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
    - Abre una terminal y navega al directorio del proyecto.
    - Ejecuta los siguientes comandos para descargar todas las dependencias necesarias:
     ```sh
-    mvn install -DskipTests
-    npm install
-    npm install cypress --save-dev
+    mvn clean install
     ```
 
 ## Instrucciones para Ejecutar los Tests
