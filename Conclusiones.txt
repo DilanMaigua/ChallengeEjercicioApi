@@ -1,0 +1,16 @@
+Durante la validación de la funcionalidad de la API, se observó una consistencia notable 
+en las respuestas de error. Para los casos erróneos, la API siempre devolvía un mensaje 
+de error en formato JSON con una estructura clara, como se ejemplifica en el siguiente 
+mensaje: {"errorMessage":"This user already exist."}. Esta uniformidad en el formato 
+de los mensajes de error facilita su captura y procesamiento en el código de 
+automatización, mejorando así la robustez y mantenibilidad del mismo.
+Sin embargo, se identificó una inconsistencia en las respuestas exitosas. A diferencia de 
+las respuestas de error, cuando una prueba resultaba correcta, la API no devolvía un 
+mensaje en formato JSON, sino un simple string, por ejemplo: "Auth_token: 
+RGlsNTQ0YWRkYXM1TWFhMTcyMTQ0Mw==". Esta desigualdad en los formatos 
+de respuesta puede complicar el procesamiento automatizado, ya que rompe la 
+expectativa de un formato semejante, requiriendo lógica adicional para manejar los 
+diferentes tipos de respuesta en el código de prueba. Durante la automatización de 
+pruebas, es crucial implementar validaciones claras para manejar tanto los casos de 
+error como los casos exitosos. Esto implica verificar si la respuesta es un JSON o un 
+simple string y actuar en consecuencia
