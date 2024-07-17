@@ -12,6 +12,7 @@ public class DemoBlazeSD {
     @Steps
     public DemoBlazeService demoblaze;
 
+
     @Given("que la aplicación esta funcionando")
     public void queLaAplicaciónEstaFuncionando() {
     }
