@@ -1,4 +1,4 @@
-package com.everis.base.util;
+package com.everis.base.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
