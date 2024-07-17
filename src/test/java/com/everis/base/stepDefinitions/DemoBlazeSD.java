@@ -1,6 +1,8 @@
 package com.everis.base.stepDefinitions;
 
 import com.everis.base.service.DemoBlazeService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,10 +24,10 @@ public class DemoBlazeSD {
         demoblaze.incializoParametrosRequestPost();
     }
 
-    @And("creo un nuevo usuario con username {string} y password {string}")
-    public void creoUnNuevoUsuarioConUsernameYPassword(String user, String pass) {
-        demoblaze.crearUsuario(user,pass);
-    }
+   // @And("creo un nuevo usuario ""([^""]*)""")
+   // public void creoUnNuevoUsuarioConUsernameYPassword(String user, String pass) {
+   //     demoblaze.crearUsuario(user,pass);
+   // }
 
     @And("ejecuto la creacion de \"([^\"]*)\"$")
     public void ejecutoLaCreacionDe(String api) {
@@ -68,4 +70,35 @@ public class DemoBlazeSD {
     }
 
 
+    @And("creo un nuevo usuario {string}")
+    public void creoUnNuevoUsuario(String json) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(json);
+
+            String user = jsonNode.get("user").asText();
+            String pass = jsonNode.get("pass").asText();
+
+            demoblaze.crearUsuario(user,pass);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @And("inicio sesion {string}")
+    public void inicioSesion(String json) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(json);
+
+            String user = jsonNode.get("user").asText();
+            String pass = jsonNode.get("pass").asText();
+
+            demoblaze.inicarSesion(user,pass);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
