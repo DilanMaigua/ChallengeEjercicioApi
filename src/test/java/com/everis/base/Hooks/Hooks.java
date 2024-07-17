@@ -8,6 +8,6 @@ public class Hooks {
     //https://www.baeldung.com/java-cucumber-hooks
     @BeforeStep
     public void beforeStep(){ //
-        LOGGER.info( "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        LOGGER.info( "@@@@");
     }
 }

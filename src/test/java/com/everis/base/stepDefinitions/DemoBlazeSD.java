@@ -22,8 +22,8 @@ public class DemoBlazeSD {
     }
 
     @And("creo un nuevo usuario con username {string} y password {string}")
-    public void creoUnNuevoUsuarioConUsernameYPassword(String arg0, String arg1) {
-        demoblaze.crearUsuario(arg0,arg1);
+    public void creoUnNuevoUsuarioConUsernameYPassword(String user, String pass) {
+        demoblaze.crearUsuario(user,pass);
     }
 
     @And("ejecuto la creacion de \"([^\"]*)\"$")
@@ -52,8 +52,8 @@ public class DemoBlazeSD {
     }
 
     @And("inicio sesion con el username {string} y password {string}")
-    public void inicioSesionConElUsernameYPassword(String arg0, String arg1) {
-        demoblaze.inicarSesion(arg0,arg1);
+    public void inicioSesionConElUsernameYPassword(String user, String pass) {
+        demoblaze.inicarSesion(user,pass);
     }
 
     @And("ejecuto el \"([^\"]*)\"$")
@@ -65,4 +65,6 @@ public class DemoBlazeSD {
     public void validoQueElUsuarioSeALogiado() {
         demoblaze.validarEstadoLogeo();
     }
+
+
 }

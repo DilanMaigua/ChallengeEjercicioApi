@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.everis.base</groupId>
-    <artifactId>base-automation-api</artifactId>
+    <artifactId>Karate</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -17,13 +17,17 @@
         <serenity.version>2.2.5</serenity.version>
         <serenity.maven.version>2.2.5</serenity.maven.version>
         <serenity.cucumber.version>2.2.2</serenity.cucumber.version>
-        <cucumber.version>5.6.0</cucumber.version>
-
+        <karate.version>1.2.0</karate.version> <!-- Versión de Karate a utilizar -->
     </properties>
 
     <dependencies>
-
-
+        <!-- Dependencias de Serenity BDD y Karate -->
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-core</artifactId>
+            <version>${karate.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -65,6 +69,7 @@
             <version>${serenity.cucumber.version}</version>
         </dependency>
 
+        <!-- Otras dependencias necesarias (como logback y Apache POI) -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -82,98 +87,50 @@
             <version>5.0.0</version>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20180813</version>
             <scope>compile</scope>
         </dependency>
-        
         <dependency>
             <groupId>org.opentelecoms.util</groupId>
             <artifactId>util</artifactId>
             <version>1.0.0</version>
         </dependency>
-
     </dependencies>
+
     <build>
         <plugins>
+            <!-- Plugin de Surefire para ejecución de pruebas -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
+                <version>3.0.0-M5</version>
                 <configuration>
-                    <skip>true</skip>
-                    <skipTests>true</skipTests>
+                    <skipTests>false</skipTests>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <showWarnings>true</showWarnings>
-                    <compilerArgs>
-                        <arg>-Xlint:all</arg>
-                        <arg>-Xlint:-processing</arg>
-                        <!--<arg>-Werror</arg>-->
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M4</version>
-                <configuration>
-                    <includes>
-                        <include>*Test.java</include>
-                    </includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>net.serenity-bdd.maven.plugins</groupId>
-                <artifactId>serenity-maven-plugin</artifactId>
-                <version>${serenity.maven.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.serenity-bdd</groupId>
-                        <artifactId>serenity-core</artifactId>
-                        <version>${serenity.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.json</groupId>
-                        <artifactId>json</artifactId>
-                        <version>20180813</version>
-                    </dependency>
 
-                </dependencies>
+            <!-- Plugin de Surefire Report para generar reportes HTML -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M5</version>
                 <executions>
                     <execution>
-                        <id>serenity-reports</id>
+                        <id>post-integration-test</id>
                         <phase>post-integration-test</phase>
                         <goals>
-                            <goal>aggregate</goal>
+                            <goal>report-only</goal>
                         </goals>
+                        <configuration>
+                            <!-- Configura el directorio de salida aquí -->
+                            <outputDirectory>${project.build.directory}/surefire-reports/karate-reports</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
