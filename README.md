@@ -1,4 +1,4 @@
-#  Challenge de Automatización de Pruebas
+#  Challenge de Automatización de Pruebas Api
 
 ## Prerrequisitos
 
@@ -15,7 +15,7 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
    - Abre una terminal y navega al directorio del proyecto.
    - Ejecuta el siguiente comando para descargar todas las dependencias necesarias de maven:
     ```sh
-    mvn clean install -U
+    mvn install -U
     ```
 
 ## Instrucciones para Ejecutar los Tests
@@ -37,16 +37,19 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
 
 ## Ejecución de Pruebas desde la Línea de Comandos
 
-Para ejecutar específicamente la clase de prueba `baseTest` desde la línea de comandos utilizando Maven, usar el siguiente comando:
+Para ejecutar las pruebas y que genere los reportes utilizaremos el siguiente comando:
 
    ```sh
    mvn clean verify 
    ```
 
-Clean ejecutara las pruebas y verify generara los reportes los cuales se encontraran en:
+Clean limpiara los antiguos reportes en caso de existir y verify generara los nuevos reportes.
+
+## Locacion de los reportes generados
+
+La locacion de los reportes generados esta en la siguientes direcciones:
 
    - target/surefire-reports/karate-reports/surefire-report.html
-   
-o tambien en :
-   
-   - target/cucumber-reports/cucumber.json
+   - target/cucumber-reports/index.html
+
+Donde se creo un reporte en cucumber y el surefire-reports para karate.
