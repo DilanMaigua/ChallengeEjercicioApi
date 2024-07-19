@@ -15,7 +15,7 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
    - Abre una terminal y navega al directorio del proyecto.
    - Ejecuta el siguiente comando para descargar todas las dependencias necesarias de maven:
     ```sh
-    mvn dependency:resolve
+    mvn clean install
     ```
 
 ## Instrucciones para Ejecutar los Tests
