@@ -15,7 +15,7 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
    - Abre una terminal y navega al directorio del proyecto.
    - Ejecuta el siguiente comando para descargar todas las dependencias necesarias de maven:
     ```sh
-    mvn install -U
+    mvn dependency:resolve
     ```
 
 ## Instrucciones para Ejecutar los Tests
@@ -31,25 +31,12 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
 3. **Ejecutar los Tests**:
    - Navega a la carpeta `src`.
    - Entra a la carpeta `test`.
-   - Entra a la carpeta `java.com.everis.base.runner`.
-   - Selecciona `baseTest`.
-   - Verifica que el tag de test sea el mismo que el del feature que desea ejecutar.
+   - Entra a la carpeta `resources`.
+   - Selecciona `DemoBlaze.feature`.
+   - Y ejecuta el Run del `Feature`.
 
-## Ejecución de Pruebas desde la Línea de Comandos
-
-Para ejecutar las pruebas y que genere los reportes utilizaremos el siguiente comando:
-
-   ```sh
-   mvn clean verify 
-   ```
-
-Clean limpiara los antiguos reportes en caso de existir y verify generara los nuevos reportes.
-
-## Locacion de los reportes generados
-
-La locacion de los reportes generados esta en la siguientes direcciones:
-
-   - target/surefire-reports/karate-reports/surefire-report.html
-   - target/cucumber-reports/index.html
-
-Donde se creo un reporte en cucumber y el surefire-reports para karate.
+4. **Localizar los reportes generados**:
+   - Navega a la carpeta `target`.
+   - Entra a la carpeta `karate-reports`.
+   - Selecciona `karate-summary.html`.
+ 

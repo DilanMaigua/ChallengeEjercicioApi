@@ -14,7 +14,9 @@ diferentes tipos de respuesta en el código de prueba. Durante la automatizació
 pruebas, es crucial implementar validaciones claras para manejar tanto los casos de 
 error como los casos exitosos. Esto implica verificar si la respuesta es un JSON o un 
 simple string y actuar en consecuencia
-
+Al trabajar con karate se busca rapidez al momento de crear pruebas por lo que debemos saber
+la sintaxis que usa para la creación de escenarios de prueba si no podemos consultar en la documentacion
+https://github.com/karatelabs/karate.git.
 Al implementar el consumo de datos mediante archivos .json, tenemos una mejor manera de manejar
 la entrada de datos para los escenarios a probar, por lo que es mas rapido de ejecutar cualquier cambio
 al momento de tener la necesidad de trabajar con otros datos.

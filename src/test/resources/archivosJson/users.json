@@ -1,12 +1,16 @@
 {
   "examples": [
     {
-      "user": "asd",
+      "user": "DiDilanNttDataChallengeApi1040",
       "pass": "312120"
     },
     {
       "user": "DilanNttDataChallengeApi1040",
       "pass": "312120"
+    },
+    {
+      "user": "DilanNttDataChallengeApi1040",
+      "pass": "3121121220"
     }
   ]
 }
