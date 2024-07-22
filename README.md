@@ -15,7 +15,7 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
    - Abre una terminal y navega al directorio del proyecto.
    - Ejecuta el siguiente comando para descargar todas las dependencias necesarias de maven:
     ```sh
-    mvn dependency:resolve
+    mvn install 
     ```
 
 ## Instrucciones para Ejecutar los Tests
@@ -31,11 +31,18 @@ Para ejecutar este proyecto de automatización de pruebas, necesitarás tener in
 3. **Ejecutar los Tests**:
    - Navega a la carpeta `src`.
    - Entra a la carpeta `test`.
-   - Entra a la carpeta `resources`.
-   - Selecciona `DemoBlaze.feature`.
-   - Y ejecuta el Run del `Feature`.
+   - Entra a la carpeta `com.example`.
+   - Selecciona `DemoBlazeRunner`.
+   - Y ejecuta el Run del de la clase.
+   
+4. **Ejecutar los Tests en linea de comandos**:
+   - A la terminal del proyecto 
+   - Ejecuta el siguiente comando
+    ```sh
+    mvn -Dtest=KarateTest test
+    ```
 
-4. **Localizar los reportes generados**:
+5. **Localizar los reportes generados**:
    - Navega a la carpeta `target`.
    - Entra a la carpeta `karate-reports`.
    - Selecciona `karate-summary.html`.
